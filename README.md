@@ -42,14 +42,16 @@ loop = Universe.deterministic(
     [{frozenset({"a", "b"}): "out"}],
 )
 
-print(reach_probability(loop, "out", "a"))    # 0    no finite stage reaches "out"
-print(frequency(loop, "out", "a"))            # 0    and the run spends no time there
-print(hyperprobability(loop, "out", "a"))     # ω    but "out" is certain by stage ω
+# No finite stage reaches "out", and the run spends no time there,
+print(reach_probability(loop, "out", "a"))  # 0
+print(frequency(loop, "out", "a"))  # 0
+# but "out" is certain by stage ω.
+print(hyperprobability(loop, "out", "a"))  # ω
 print(ordinal_probability(loop, "out", "a"))  # 1/ω
 
 # The whole jump at ω comes through one strange loop.
 for attractor, p in TransfiniteLaw(loop, "out", "a").loops_into(OMEGA).items():
-    print(attractor.states, p)                # ('a', 'b') 1
+    print(attractor.states, p)  # ('a', 'b') 1
 ```
 
 A fair coin shows heads eventually, but no finite number of tosses is sure to:
@@ -58,13 +60,13 @@ A fair coin shows heads eventually, but no finite number of tosses is sure to:
 toss = {"H": "1/2", "T": "1/2"}
 coin = Universe({"H": toss, "T": toss})
 
-print(frequency(coin, "H", "T"))            # 1/2
-print(hyperprobability(coin, "H", "T"))     # ω
+print(frequency(coin, "H", "T"))  # 1/2
+print(hyperprobability(coin, "H", "T"))  # ω
 print(ordinal_probability(coin, "H", "H"))  # 1/ω
 
 first_heads = TransfiniteLaw(coin, "H", "T")
 print(*(first_heads.exactly(n) for n in range(1, 5)))  # 1/2 1/4 1/8 1/16
-print(first_heads.at_most(OMEGA))                      # 1
+print(first_heads.at_most(OMEGA))  # 1
 ```
 
 ## Concepts
