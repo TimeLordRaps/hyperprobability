@@ -1,0 +1,66 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hyperprobability"
+version = "0.1.0"
+description = "Hyperprobability: the least transfinite number of simulation evaluations that guarantees an event, with the transfinite and ordinal probability it grounds"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{name = "Tyler Roost"}]
+keywords = ["hyperprobability", "probability", "ordinal", "transfinite", "markov-chain", "attractor", "strange-loop", "ordinal-probability", "kac-lemma"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Mathematics",
+  "Typing :: Typed",
+]
+dependencies = ["ordinatics>=0.3,<0.4"]
+
+[project.optional-dependencies]
+test = [
+  "pytest>=8.0",
+  "pytest-timeout>=2.3",
+]
+dev = [
+  "pytest>=8.0",
+  "pytest-timeout>=2.3",
+  "ruff>=0.11",
+  "build>=1.2",
+  "twine>=6.0",
+  "hatchling>=1.27",
+]
+
+[project.urls]
+Homepage = "https://github.com/TimeLordRaps/hyperprobability"
+Repository = "https://github.com/TimeLordRaps/hyperprobability"
+Issues = "https://github.com/TimeLordRaps/hyperprobability/issues"
+Specification = "https://github.com/TimeLordRaps/hyperprobability/blob/main/SPEC.md"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/hyperprobability"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "examples", "SPEC.md", "CITATION.cff", "README.md", "LICENSE", "CHANGELOG.md", "pyproject.toml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+norecursedirs = ["build", "dist", ".git", ".venv"]
+addopts = "-ra --durations=10 --timeout=120"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

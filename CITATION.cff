@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: Hyperprobability
+type: software
+version: 0.1.0
+authors:
+  - family-names: Roost
+    given-names: Tyler
+    orcid: "https://orcid.org/0009-0007-7850-489X"
+repository-code: "https://github.com/TimeLordRaps/hyperprobability"
+abstract: "The least transfinite number of simulation evaluations that guarantees an event in a contained universe, with the transfinite and ordinal probability it grounds."
+keywords:
+  - hyperprobability
+  - transfinite-probability
+  - ordinal-probability
+  - markov-chains
+  - strange-loops
+license: Apache-2.0
